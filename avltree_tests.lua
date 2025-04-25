@@ -119,9 +119,11 @@ print("Passed RL rotation test on deletion")
 -- **Additional Test Case: Insert and Delete to Ensure Balance**
 print("\nAdditional Test Case: Insert and Delete to Ensure Balance")
 tree:clear()
-local values = {30, 20, 10, 50, 40, 25}
-for _, value in ipairs(values) do
-    tree:insert(value)
+do
+    local values = {30, 20, 10, 50, 40, 25}
+    for _, value in ipairs(values) do
+        tree:insert(value)
+    end
 end
 assert(isBalanced(tree, tree.root), "Tree is not balanced after multiple insertions")
 print("Passed balance test after multiple insertions")
