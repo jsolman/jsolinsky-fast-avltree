@@ -468,9 +468,9 @@ function test_extended_benchmarks(tree)
     -- Generate random min/max pairs
     local range_pairs = {}
     for i = 1, n / 100 do -- Fewer ranges for performance
-        local min_key = math.random(1, max_key - 1000)
-        local max_key = min_key + math.random(1, 1000)
-        table.insert(range_pairs, { min_key, max_key })
+        local range_min_key = math.random(1, max_key - 1000)
+        local range_max_key = range_min_key + math.random(1, 1000)
+        table.insert(range_pairs, { range_min_key, range_max_key })
     end
     for round = 1, rounds do
         local start_time = os.clock()
