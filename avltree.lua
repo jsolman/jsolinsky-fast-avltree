@@ -1,5 +1,5 @@
 -- Very fast and efficient AVL Tree Implementation for lua and LuaJIT.
--- Speciifically optimized for LuaJIT. An AVL Tree performs better than
+-- Specifically optimized for LuaJIT. An AVL Tree performs better than
 -- a Red-black tree on LuaJIT due to less branches in the implementation
 -- leading to better more predictable performance of the trace compiler.
 --
@@ -392,7 +392,7 @@ function AVLTree:getKeyVal(index)
 end
 
 -- Note: If you want to ensure a node index obtained is still valid after other operations have been performed on the
---       tree, store the key along with the index returned and use getNodeKeyVal(index) to ensure the key at the
+--       tree, store the key along with the index returned and use getKeyVal(index) to ensure the key at the
 --       index has not changed. This allows you to potentially walk the tree while allowing it to be modified in between
 --       calls if desired, by yielding to other coroutines after insert or delete.
 function AVLTree:nextNodeIndex(index)
