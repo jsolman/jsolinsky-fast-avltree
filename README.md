@@ -41,7 +41,7 @@ By choosing an AVL tree over a red-black tree, this library achieves a balance o
 Create a new AVL tree with an optional custom comparator for non-numeric keys:
 
 ```lua
-local AVLTree = require('avltree3')
+local AVLTree = require('avltree')
 
 -- Default comparator (works with numbers and strings)
 local tree = AVLTree:new()
