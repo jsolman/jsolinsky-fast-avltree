@@ -271,9 +271,10 @@ function AVLTree:insert(key, value)
         elseif cmp > 0 then
             current = nodes[currentBase + RIGHT]
         else
+            local oldValue = self.values[current]
             self.values[current] = value  -- Update value if key exists
             self.keysLen = self.keysLen - 1
-            return current
+            return current, oldValue
         end
     end
 
