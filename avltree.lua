@@ -356,6 +356,13 @@ function AVLTree:deleteByNodeIndex(index)
 
     removeKey(self, index)
 
+    if parent ~= nil and parent == self.keysLen then
+      -- if parent was the end node, we will have swapped it into
+      -- the index of the node being removed, so we must account for
+      -- that when balancing.
+      parent = index
+    end
+    
     -- Balance upwards
     local node = parent
     while node do
