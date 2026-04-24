@@ -250,6 +250,23 @@ end
 -- **Public Methods**
 
 function AVLTree:insert(key, value)
+    local nodes = self.nodes
+    local current = self.root
+    local parent
+    while current do
+        parent = current
+        local cmp = self.comparator(key, self.keys[current])
+        if cmp < 0 then
+            current = nodes[4 * current + LEFT]
+        elseif cmp > 0 then
+            current = nodes[4 * current + RIGHT]
+        else
+            local oldValue = self.values[current]
+            self.values[current] = value  -- Update value if key exists
+            return current, oldValue
+        end
+    end
+
     local index = self.keysLen
     self.keysLen = index + 1
     local base = 4 * index
@@ -257,25 +274,6 @@ function AVLTree:insert(key, value)
     if not self.root then
         self.root = index
         return index
-    end
-
-    local nodes = self.nodes
-    local current = self.root
-    local parent
-    while current do
-        parent = current
-        local cmp = self.comparator(key, self.keys[current])
-        local currentBase = 4 * current
-        if cmp < 0 then
-            current = nodes[currentBase + LEFT]
-        elseif cmp > 0 then
-            current = nodes[currentBase + RIGHT]
-        else
-            local oldValue = self.values[current]
-            self.values[current] = value  -- Update value if key exists
-            self.keysLen = self.keysLen - 1
-            return current, oldValue
-        end
     end
 
     nodes[base + PARENT] = parent
