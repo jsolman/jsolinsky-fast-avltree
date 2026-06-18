@@ -118,12 +118,6 @@ local function removeKey(self, atIndex)
 
         -- Update parent's child pointer
         local lastParent = nodes[lastBase + PARENT]
-        if lastParent == atIndex then
-            -- The node being moved was a child of the node being removed.
-            -- Its new parent should be the parent of the removed node.
-            lastParent = nodes[atBase + PARENT]
-        end
-
         if lastParent then
             local lastParentBase = 4 * lastParent
             if nodes[lastParentBase + LEFT] == lastKeyIndex then
